@@ -1,0 +1,22 @@
+<%= form_for(@manga) do |f| %>
+  <% if @manga.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manga.errors.count, "error") %> prohibited this manga from being saved:</h2>
+
+      <ul>
+      <% @manga.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: 'span5' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Create Manga' %>
+  </div>
+<% end %>

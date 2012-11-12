@@ -1,0 +1,6 @@
+<h1>Mangas</h1>
+<p>Here are all my mangas:</p>
+<ul><% @mangas.each do |manga| %> 
+<li><%= link_to manga.name, manga_path(manga) %></li>
+<% end %>
+</ul> 

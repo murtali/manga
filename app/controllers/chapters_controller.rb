@@ -10,9 +10,13 @@ class ChaptersController < ApplicationController
 	end
 
 	def create
-		@chapter = Chapter.new(params[:chapter])
-		@chapter.save
-		redirect_to manga_path(@chapter)
+		@manga = Manga.find_by_slug(params[:manga_id])
+		@chapter = @manga.chapters.create!(params[:chapter])
+		redirect_to manga_path(@manga)
+	end
+
+	def show
+		@chapter = Chapter.find(params[:id])
 	end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112191358) do
+ActiveRecord::Schema.define(:version => 20121115000821) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20121112191358) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "image"
   end
 
   add_index "pages", ["chapter_id"], :name => "index_pages_on_chapter_id"

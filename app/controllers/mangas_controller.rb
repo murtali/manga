@@ -14,7 +14,11 @@ class MangasController < ApplicationController
   end
 
   def show
-  	@manga = Manga.includes(:chapters).find_by_slug(params[:id])
+    if params[:id_or_slug] =~ /^\d+$/
+      @manga = Manga.includes(:chapters).find(params[:id_or_slug])
+    else
+      @manga = Manga.includes(:chapters).find_by_slug(params[:id_or_slug])
+    end
   end
 
 

@@ -1,10 +1,32 @@
 MangaReader::Application.routes.draw do
 
+
   root :to => 'mangas#index'
 
-  resources :mangas do
-    resources :chapters
-  end
+  # resources :mangas do
+  #   resources :chapters
+  # end
+  get     'mangas/:manga_id/chapters(.:format)'               => 'chapters#index',  :as => :manga_chapters
+  post    'mangas/:manga_id/chapters(.:format)'               => 'chapters#create'
+  get     'mangas/:manga_id/chapters/new(.:format)'           => 'chapters#new',    :as => :new_manga_chapter   
+  get     'mangas/:manga_id/chapters/:id/edit(.:format)'      => 'chapters#edit',   :as => :edit_manga_chapter
+  get     'mangas/:manga_id/chapters/:id(.:format)'           => 'chapters#show',   :as => :manga_chapter
+  put     'mangas/:manga_id/chapters/:id(.:format)'           => 'chapters#update'
+  delete  'mangas/:manga_id/chapters/:id(.:format)'           => 'chapters#destroy'
+
+  get     'mangas(.:format)'                                  => 'mangas#index',  :as => :mangas
+  post    'mangas(.:format)'                                  => 'mangas#create'
+  get     'mangas/new(.:format)'                              => 'mangas#new',    :as => :new_manga   
+  get     'mangas/:id_or_slug/edit(.:format)'                 => 'mangas#edit',   :as => :edit_manga
+  get     'mangas/:id_or_slug(.:format)'                      => 'mangas#show',   :as => :manga
+  put     'mangas/:id_or_slug(.:format)'                      => 'mangas#update'
+  delete  'mangas/:id_or_slug(.:format)'                      => 'mangas#destroy'
+
+  resources :pages
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

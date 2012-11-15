@@ -1,6 +1,6 @@
 <% @manga.chapters.each do |chapter| %>
 	<ul>
-		<li><%= chapter.title %></li>
+		<li><%= link_to chapter.title, manga_chapter_path(@manga, chapter) %></li>
 	</ul>
 
 <% end %>

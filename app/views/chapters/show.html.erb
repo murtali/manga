@@ -1,0 +1,13 @@
+<h1> <%= @chapter.title %> </h1>
+<div id='pages'>
+	<% for page in @chapter.pages %>
+		<div class='page'>
+			<%= image_tag page.image_url if page.image? %>
+			<%= page.name %>
+		</div>
+	<% end %>
+</div>
+
+<p>
+<%= link_to "Add new pages", new_page_path(:chapter_id => @chapter) %>
+</p>

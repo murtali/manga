@@ -1,7 +1,14 @@
+<table class="table">
+	<tr><td>Chapter Name:</td></tr>
+			<ol>
 <% @manga.chapters.each do |chapter| %>
-	<ul>
-		<li><%= link_to chapter.title, manga_chapter_path(@manga, chapter) %></li>
-	</ul>
+
+	<tr><td>
+			<li><%= link_to chapter.title, manga_chapter_path(@manga, chapter) %></li>
+	</td></tr>
 
 <% end %>
-<%= link_to 'Add a new chapter', new_manga_chapter_path(@manga) %>
+		</ol>
+
+<tr><td><%= link_to 'Add a new chapter', new_manga_chapter_path(@manga) %></td></tr>
+</table>

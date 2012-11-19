@@ -1,13 +1,33 @@
-<h1> <%= @chapter.title %> </h1>
-<div id='pages'>
-	<% for page in @chapter.pages %>
-		<div class='page'>
+
+<div class="navbar" id="chapter-nav-bar">
+	<div class="navbar-inner">
+		<a class="brand"><%= @chapter.title %></a>
+
+		<ul class="nav pull-right">
+			<li id="chapter-previous-page"><a href="#">previous</a></li>
+			<li id="chapter-next-page"><a href="#">next</a></li>
+			<li class="divider-vertical"></li>
+			<li>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">pages</a>
+							<ul class="dropdown-menu">
+								<% @chapter.pages.each do |page| %>
+									<li id="page-dropdown">
+										<a href="#" id="<%= dom_id(page) %>"><%= dom_id(page).split("_")[1] %></a>
+									</li>
+								<% end %> 
+							</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div id='chapter'>
+	<% @chapter.pages.each do |page| %>
+		<div id='<%= dom_id(page) %>' class='chapter-page' data-active="false">
 			<%= image_tag page.image_url if page.image? %>
-			<%= page.name %>
 		</div>
 	<% end %>
 </div>
 
-<p>
-<%= link_to "Add new pages", new_page_path(:chapter_id => @chapter) %>
-</p>
+
+

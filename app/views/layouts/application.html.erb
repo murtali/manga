@@ -14,20 +14,8 @@
 					<ul class="nav">
 						<li class="active"><%= link_to "Manga List", mangas_path %></li>
 					</ul>
-					<ul class="nav pull-right">
-						<% if current_user %>
-							<li class="divider-vertical"></li>
-							<li>Logged in as: <%= current_user.email %></li>
-							<li class="divider-vertical"></li>
-							<li><%= link_to "Log Out", log_out_path, :method => "delete" %></li>
-							<li class="divider-vertical"></li>
-						<% else %>
-							<li class="divider-vertical"></li>
-							<li><%= link_to "Sign Up", sign_up_path %></li>
-							<li class="divider-vertical"></li>
-							<li><%= link_to "Log In", log_in_path %></li>						
-							<li class="divider-vertical"></li>
-						<% end %>
+					<ul class="nav nav-bar-user pull-right" id="top_nav_bar_user">
+						<%= render 'layouts/nav_bar_user'%>
 					</ul>
 			</div>
 		</div>

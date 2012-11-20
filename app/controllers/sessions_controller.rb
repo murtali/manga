@@ -6,16 +6,20 @@ class SessionsController < ApplicationController
   def create 
   	user = User.authenticate(params[:email], params[:password])
   	if user
-  		session[:user_id] = user.id
-  		redirect_to root_url, :notice => "Logged in!"
+      # if user is successfully logged in then return a json file to the ajax
+      # and refresh the navbar
+      session[:user_id] = user.id
+      render :json => {:success => true, :nav_bar_user => render_to_string(:partial => 'layouts/nav_bar_user', :locals => {:current_user => current_user}) }	
+  	# 	redirect_to root_url, :notice => "Logged in!"
   	else
-  		flash.now.alert = "Invalid email or password"
-  		render "new"
+      render :json => "Unknown username or password", :status => :unprocessable_entity
+  		
+  		# render "new"
   	end
   end
 
   def destroy
-  	session[:user_id] = nil
+  	session.delete(:user_id)
   	redirect_to root_url, :notice => "Logged out!"
   end
 

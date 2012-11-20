@@ -67,7 +67,45 @@ $(document).ready(function(){
 	});
 
 
+  $('#login-form-dropdown input, #login-form-dropdown label').click(function(e) {
+    e.stopPropagation();
+  });
 
+
+// Ajaxifying the log in
+	$('#login-form-dropdown').on('submit', 'form', function(event){
+		event.preventDefault();
+		var $self = $(this),
+				params = $self.serialize();
+
+
+		$.ajax({
+			type: $self.attr('method'),
+			url: 	$self.attr('action'),
+			dataType: 'json',
+			data: params,
+
+			success: function(data, status, xhr) {
+				$self.trigger('ajax:success', [data, status, xhr]);
+			},
+			error: function(data, status, error) {
+				$self.trigger('ajax:error', [data, status, error]);	
+			},
+			complete: function(xhr, status) {
+				$self.trigger('ajax:complete', [xhr, status]);
+			}
+
+		});
+	});
+
+// if the log in is successful then, the top nav bar should get refressed
+	$('#login-form-dropdown').on('ajax:success', 'form', function(event, data){
+		$('.navbar-fixed-top .nav-bar-user').html(data.nav_bar_user);
+	});
+	
+	$('#login-form-dropdown').on('ajax:error', 'form', function(event, data){
+		$('.dropdown-menu').prepend(data.responseText);
+	});
 
 
 });

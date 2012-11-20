@@ -1,0 +1,15 @@
+<ul class="dropdown-menu" id="login-form-dropdown">
+
+<%= form_tag sessions_path %>
+
+		<%= form_tag sessions_path do %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+<%= submit_tag nil, :class => "btn" %>
+
+
+<% end %>
+</ul>

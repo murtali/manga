@@ -25,10 +25,10 @@ $(document).ready(function(){
 
 	var	show_next = function() {
 		var active = $('[data-active="true"]');
-		var next = $('[data-active="true"] + .chapter-page');
-
+		var next_page = $('[data-active="true"]').next();
+		
 		hide_page(active);
-		show_page(next);
+		show_page(next_page);
 	};
 
 	var show_previous = function () {
@@ -61,10 +61,13 @@ $(document).ready(function(){
 	$("li#page-dropdown a").click(function(){
 		var active = $('[data-active="true"]');
 		var n = parseInt($(this).text());
-		var nextPage = pages.eq(n-1);
+		var nextPage = $("div[id*='" + n + "']");
 		hide_page(active);
 		show_page(nextPage);
 	});
+
+// Navigating to another chapter	
+	
 
 
   $('#login-form-dropdown input, #login-form-dropdown label').click(function(e) {
@@ -106,6 +109,11 @@ $(document).ready(function(){
 	$('#login-form-dropdown').on('ajax:error', 'form', function(event, data){
 		$('.dropdown-menu').prepend(data.responseText);
 	});
+
+	$('.edit-chapter-pages').on('ajax:success', 'a', function(event, data){
+		pageToRemove = "img[src*='" + data.pagename + "']" 
+		$(pageToRemove).parent().remove();
+	})
 
 
 });

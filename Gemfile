@@ -20,5 +20,6 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'quiet_assets'
+gem 'rmagick'
 
-
+gem 'pry-rails', :group => :development

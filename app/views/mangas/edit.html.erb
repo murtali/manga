@@ -1,0 +1,58 @@
+<h2>Series Management</h2>
+
+<h3><%= @manga.name %></h3>
+
+
+<%= form_for @manga do |f| %>
+
+	<p>	<%= f.label 'Name:' %> <%= f.text_field :name %></p>
+	<p>	<%= f.submit %> </p>
+
+<% end %>
+
+<div class="modal fade" id="delete-confirm">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h4>Are you sure you want to delete this manga?</h4>
+  </div>
+  <div class="modal-footer">
+    <%= link_to 'Delete', manga_path('pony'), method: :delete, :class => 'btn btn-danger' %>
+    <a href="#" data-dismiss="modal" class="btn">Cancel</a>
+  </div>
+</div>
+
+<a href="#delete-confirm" data-id="<%= @manga.slug %>" class="delete-confirm btn btn-danger">Delete Manga</a>
+
+<table class="table">
+
+	<thead><tr><td><strong>Chapters:</strong></td><td>Manage:</td></tr></thead>
+
+	<% @manga.chapters.each do |chapter| %>
+	
+	<tr>
+		<td><%= chapter.title %></td>
+		<td><%= link_to 'Edit', edit_manga_chapter_path(@manga, chapter), :class => 'btn' %>
+				<%= link_to 'Delete', manga_chapter_path(@manga, chapter), method: :delete, :class => 'btn btn-danger'%></a>
+		</td>
+		
+
+	</tr>
+
+	<% end %>
+
+	<tr><td colspan='2'><%= link_to 'Add Chapter', new_manga_chapter_path(@manga), :class => 'btn' %></td></tr>
+
+</table>
+
+<!--
+
+	Todo list:
+		- Edit series name - use inline editing
+		- Add chapters
+		- Edit specific chapters
+
+
+
+
+ -->
+

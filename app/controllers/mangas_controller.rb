@@ -21,5 +21,18 @@ class MangasController < ApplicationController
     end
   end
 
+  def update
+  end
+
+
+  def edit
+    @manga = Manga.find_by_slug(params[:id_or_slug])
+  end
+
+  def destroy
+    @manga = Manga.find_by_slug(params[:id_or_slug])
+    @manga.delete
+  end
+
 
 end

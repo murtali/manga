@@ -1,23 +1,8 @@
-<%= form_for [@manga, @chapter] do |f| %>
-  <% if @chapter.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
-
-      <ul>
-      <% @chapter.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, class: 'span5' %>
-
-  </div>
-
-  <div class="actions">
-    <%= f.submit 'Add Chapter' %>
-  </div>
+<div>
+<%= form_for Page.new do |f| %>
+  <%= f.hidden_field :chapter_id, :value => chapter_id %>
+  <%= f.label "Upload pages:" %>
+  <%= f.file_field :image, multiple: true, name: "page[image]" %>
+  <%= f.submit 'Upload', :id => 'upload' %>
 <% end %>
+</div>

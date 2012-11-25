@@ -1,7 +1,7 @@
 
 <div class="navbar" id="chapter-nav-bar">
 	<div class="navbar-inner">
-		<a class="brand"><%= @chapter.title %></a>
+		<a class="brand" id="current_chapter_title"><%= @chapter.title %></a>
 
 		<ul class="nav pull-right">
 			<li>
@@ -9,7 +9,8 @@
 							<ul id="chapters-dropdown" class="dropdown-menu">
 								<% @manga.chapters.each do |chapter| %>
 									<li id="chapter-dropdown">
-										<%= link_to chapter.title, manga_chapter_path(@manga,chapter), :id => dom_id(chapter) %>
+										<%= link_to chapter.title, manga_chapter_path(@manga,chapter), 
+												:id => dom_id(chapter), :data => {:name => chapter.title} %>
 									</li>
 								<% end %> 
 							</ul>
@@ -37,6 +38,9 @@
 			<%= image_tag page.image_url if page.image? %>
 		</div>
 	<% end %>
+</div>
+<div id="last_chapter">
+	You've reached the last chapter of this series. Thanks for reading!
 </div>
 
 

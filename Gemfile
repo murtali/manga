@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 
 
+# gem 'sqlite3'
 gem 'pg'
 
 group :assets do
@@ -20,5 +21,5 @@ gem 'carrierwave'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'quiet_assets'
 gem 'rmagick'
-
+gem 'fog'
 gem 'pry-rails', :group => :development

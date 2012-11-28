@@ -2,6 +2,7 @@ $(document).ready(function(){
 
   // $('#new_page').fileupload();
 
+
 $("#new_page").fileupload({
 // paramName: 'myfile',
 // url: '/home/upload',
@@ -9,20 +10,31 @@ $("#new_page").fileupload({
 
 	        console.log(e);
 	        console.log(data);
+	        console.log(data.files);
 
-	        // $("#preview").show();
-	        debugger
-	        $("#upload").on('click', function () {
-	        		debugger
+
+$("#new_page").on('submit', function (e) {
+							console.log(data.files[0].name)
 	            data.submit();
-	        debugger
 	        });
+
+
+	        $("#preview").show();
+	        // debugger
 
 	    },
 	    done: function (e, data) {
-	    	debugger
+	    	//debugger
 	        alert('done');
+	      //  return false;
 	    }
 	});
+
+
+$("#new_page").on('submit', function (e) {
+		console.log("cancelling_submission")
+		return false;
+	            //data.submit();
+	        });
 
 });

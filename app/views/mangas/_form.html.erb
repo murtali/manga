@@ -1,22 +1,20 @@
-<%= form_for(@manga) do |f| %>
-  <% if @manga.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@manga.errors.count, "error") %> prohibited this manga from being saved:</h2>
+<h2>Create a new manga</h2>
+<%= form_tag(:controller => "mangas", :action => "create", :method => "post") do %>
 
-      <ul>
-      <% @manga.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: 'span5' %>
+    <%= label_tag "Manga Name:" %>
+    <%= text_field_tag 'manga[name]', nil, :include_blank => false %>
   </div>
 
-  <div class="actions">
-    <%= f.submit 'Create Manga' %>
+  <div class="field">
+    <%= label_tag "author" %>
+    <%= text_field_tag 'manga[author]', nil, :include_blank => false %>
   </div>
+
+
+  <div class="actions">
+    <%= submit_tag 'Create Manga', :class => "btn" %>
+  </div>
+
 <% end %>

@@ -4,7 +4,7 @@ MangaReader::Application.routes.draw do
   root :to => 'mangas#index'
 
   # resources :mangas do
-  #   resources :chapters
+  #   resources :chapters/
   # end
   get     'mangas/:manga_id/chapters(.:format)'               => 'chapters#index',  :as => :manga_chapters
   post    'mangas/:manga_id/chapters(.:format)'               => 'chapters#create'

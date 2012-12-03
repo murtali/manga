@@ -5,6 +5,8 @@ class Manga < ActiveRecord::Base
   attr_accessible :name
   attr_protected :slug
 
+  validates_presence_of :name, :author_id
+
 
   def to_param
   	slug
@@ -12,6 +14,14 @@ class Manga < ActiveRecord::Base
 
   def create_slug
   	self.slug = name.parameterize
+  end
+
+  def self.create_with_author!(options = {})
+    Manga.transaction do
+      author = Author.find_or_create_by_name!(:name => options[:author_name])
+      manga = author.mangas.create!(:name => options[:manga_name])
+    end
+    rescue
   end
 
 end

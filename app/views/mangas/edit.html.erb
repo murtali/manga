@@ -4,11 +4,13 @@
 
 
 <%= form_for @manga do |f| %>
-
-	<p>	<%= f.label 'Name:' %> <%= f.text_field :name %></p>
-	<p>	<%= f.submit %> </p>
-
+	<p><%= f.label 'Name:' %> <%= f.text_field :name %></p>
+	<div>	
+		<%= f.submit :class => "btn" %>
 <% end %>
+		<a href="#delete-confirm" data-id="<%= @manga.slug %>" class="delete-confirm btn btn-danger">Delete Manga</a>
+	</div>
+
 
 <div class="modal fade" id="delete-confirm">
   <div class="modal-header">
@@ -21,7 +23,7 @@
   </div>
 </div>
 
-<a href="#delete-confirm" data-id="<%= @manga.slug %>" class="delete-confirm btn btn-danger">Delete Manga</a>
+
 
 <table class="table">
 

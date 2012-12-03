@@ -22,7 +22,7 @@
 <% @chapter.pages.each do |page| %>
 
 <div class="page-edit">
-	<%= image_tag(page.thumb_url) %><br />
+	<%= image_tag page.image(:thumb) %><br />
 	<%= link_to 'edit', edit_page_path(page) %>
 	<%= link_to 'delete', page_path(page), :method => 'delete', :remote => 'true' %>
 </div>

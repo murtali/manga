@@ -1,4 +1,6 @@
 class MangasController < ApplicationController
+  before_filter :get_manga, :only => [:update, :edit, :destroy]
+
   def index
   	@mangas = Manga.all
   end
@@ -8,9 +10,14 @@ class MangasController < ApplicationController
   end
 
   def create
-  	@manga = Manga.new(params[:manga])
-  	@manga.save
-  	redirect_to mangas_path
+    if @manga = Manga.create_with_author!(:manga_name => params[:manga][:name],
+                  :author_name => params[:manga][:author])
+      redirect_to mangas_path
+    else
+      flash[:notice] = "The author or manga fields cannot be left blank."
+      render "new"
+    end
+
   end
 
   def show
@@ -22,17 +29,23 @@ class MangasController < ApplicationController
   end
 
   def update
+    @manga.update_attributes!(params[:manga])
+    redirect_to edit_manga_path(@manga)
   end
 
 
   def edit
-    @manga = Manga.find_by_slug(params[:id_or_slug])
   end
 
   def destroy
-    @manga = Manga.find_by_slug(params[:id_or_slug])
     @manga.delete
+    redirect_to root_path
   end
 
+  private
+
+  def get_manga
+    @manga = Manga.find_by_slug(params[:id_or_slug])
+  end
 
 end

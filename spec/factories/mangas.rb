@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :manga do
     name "Naruto Something"
-    author_id "1"
+    author_id { FactoryGirl.create :author }
   end
 end

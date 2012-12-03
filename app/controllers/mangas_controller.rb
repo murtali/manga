@@ -12,9 +12,10 @@ class MangasController < ApplicationController
   def create
     if @manga = Manga.create_with_author!(:manga_name => params[:manga][:name],
                   :author_name => params[:manga][:author])
+      flash[:notice] = "Succesfully added manga."
       redirect_to mangas_path
     else
-      flash[:notice] = "The author or manga fields cannot be left blank."
+      flash[:error] = "The author or manga fields cannot be left blank."
       render "new"
     end
 

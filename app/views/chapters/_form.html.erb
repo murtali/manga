@@ -1,8 +1,6 @@
-<div>
 <%= form_for Page.new do |f| %>
   <%= f.hidden_field :chapter_id, :value => chapter_id %>
   <%= f.label "Upload pages:" %>
   <%= f.file_field :image, multiple: true, name: "page[image]" %>
   <%= f.submit 'Upload', :id => 'upload' %>
 <% end %>
-</div>

@@ -20,14 +20,16 @@
 <div class='edit-chapter-pages'>
 
 <% @chapter.pages.each do |page| %>
-
-<div class="page-edit">
-	<%= image_tag page.image(:thumb) %><br />
-	<%= link_to 'edit', edit_page_path(page) %>
-	<%= link_to 'delete', page_path(page), :method => 'delete', :remote => 'true' %>
-</div>
+	<div class="page-edit">
+		<%= image_tag page.image_url(:thumb) %><br />
+		<%= link_to 'delete', page_path(page), :method => 'delete', :remote => true %>
+	</div>
 
 <% end %>
-
 </div>
-<%= render 'chapters/form', :chapter_id => @chapter.id %>
+
+<div class='chapter_input'>
+	<br />
+	<%= render 'chapters/form', :chapter_id => @chapter.id %>
+</div>
+

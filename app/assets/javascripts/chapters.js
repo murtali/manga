@@ -137,7 +137,9 @@ $(document).ready(function(){
 	});
 
 	$('.edit-chapter-pages').on('ajax:success', 'a', function(event, data){
+		debugger
 		pageToRemove = "img[src*='" + data.pagename + "']" 
+		debugger
 		$(pageToRemove).parent().remove();
 	})
 

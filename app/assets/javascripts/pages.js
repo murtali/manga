@@ -25,7 +25,7 @@ $("#new_page").on('submit', function (e) {
 	    },
 	    done: function (e, data) {
 	    	//debugger
-	        alert('done');
+	        // alert('done');
 	      //  return false;
 	    }
 	});

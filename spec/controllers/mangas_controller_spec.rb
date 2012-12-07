@@ -30,7 +30,6 @@ describe MangasController do
 
 
   describe "#create" do
-
     context "when the manga is valid" do
       let!(:manga_attrs) {{:name => manga.name, :author => manga.author}}
 
@@ -44,7 +43,6 @@ describe MangasController do
         post(:create, :manga => manga_attrs)
         response.should redirect_to(mangas_path)
       end
-
     end
 
     context "when the manga is not valid" do
@@ -55,7 +53,53 @@ describe MangasController do
         response.should render_template('mangas/new')
       end
     end
-
   end
+
+describe'#update'do 
+	before :each do
+    @manga = manga
+	end
+
+	it "locates the requested manga" do
+		put :update, id_or_slug: @manga, manga: attributes_for(:manga) 
+		assigns(:manga).should eq(@manga)
+	end
+	
+	context "valid attributes" do
+		it "changes @manga's attributes" do
+      put :update, id_or_slug: @manga,
+       manga: attributes_for(:manga,
+       name: "Another cool name")
+      @manga.reload
+			@manga.name.should eq("Another cool name") 
+		end
+
+		it "redirects to the updated manga" do
+			put :update, id_or_slug: @manga, manga: attributes_for(:manga) 
+			response.should redirect_to edit_manga_path(@manga)
+		end 
+	end
+
+	# context "invalid attributes" do
+	# 	let!(:invalid_manga_attrs) {{:name => nil}}
+
+	# 	it "does not change manga's attributes" do
+ #      put :update, id_or_slug: @manga,
+ #        :manga => invalid_manga_attrs
+ #      @manga.reload
+	# 		@manga.name.should_not eq("")
+	# 	end
+
+	# 	it "re-renders the edit method" do
+	# 		put :update, id_or_slug: @manga, :manga => invalid_manga_attrs 
+	# 		response.should render_template :edit
+	# 	end 
+	# end
+end
+
+
+
+
+
 
 end

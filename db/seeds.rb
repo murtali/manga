@@ -11,6 +11,6 @@ admin = User.create([{:email => "admin@example.com",
 	:password => "qwerty", :password_confirmation => "qwerty",
 	:admin => true}], :without_protection => true)
 
-user = User.create(:email => "user@example.com", :password => "qwerty"
+user = User.create(:email => "user@example.com", :password => "qwerty",
 	:password_confirmation => "qwerty", )
 

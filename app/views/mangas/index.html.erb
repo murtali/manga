@@ -2,14 +2,24 @@
 
 <table class="table table-hover">
 
-<thead><tr><td>Series Name:</td><td>Rating:</td><td>Admin:</td></tr></thead>
+<thead>
+	<tr>
+		<td>Series Name:</td>
+		<td>Rating:</td>
+		<% if allow?("mangas", "edit") %>
+		<td>Admin:</td>
+		<% end %>
+	</tr>
+</thead>
 
 <% @mangas.each do |manga| %> 
 
 	<tr>
 		<td><%= link_to manga.name, manga_path(manga) %></td>
 		<td></td>
+		<% if allow?("mangas", "edit") %>
 		<td><%= link_to "Manage", edit_manga_path(manga.slug) %></td>
+		<% end %>
 	</tr>
 
 <% end %>

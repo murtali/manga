@@ -9,4 +9,8 @@ class Page < ActiveRecord::Base
     self.name ||= File.basename(image.filename, '.*') if image
   end
 
+  def page_number
+  	self.name.match(/\d+\D+(\d+.+)/) { $1 }
+  end
+
 end

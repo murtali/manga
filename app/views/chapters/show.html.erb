@@ -21,9 +21,9 @@
 			<li>
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">pages</a>
 							<ul class="pages-dropdown dropdown-menu">
-								<% @chapter.pages.each do |page| %>
+								<% @chapter.sorted_pages.each do |page| %>
 									<li id="page-dropdown">
-										<a href="#" id="<%= dom_id(page) %>"><%= dom_id(page).split("_")[1] %></a>
+										<a href="#" id="<%= page.page_number %>"><%= page.page_number %></a>
 									</li>
 								<% end %> 
 							</ul>
@@ -33,8 +33,8 @@
 </div>
 
 <div id='chapter'>
-	<% @chapter.pages.each do |page| %>
-		<div id='<%= dom_id(page) %>' class='chapter-page' data-active="false">
+	<% @chapter.sorted_pages.each do |page| %>
+		<div id='<%= page.page_number %>' class='chapter-page' data-active="false">
 			<%= image_tag page.image_url if page.image? %>
 		</div>
 	<% end %>

@@ -896,10 +896,39 @@ body {
 }
 
 #chapter-nav-bar {
+	padding:1px 15px;
+	margin:0 0 20px;
 	margin-right: auto;
 	margin-left: auto;
-	width: 80%;
+	width: 67%;
 	position: fixed;
+	background-color:#f5f5f5;
+}
+
+#chapter-nav-bar > ul > li > a {
+	float: none;
+	padding: 10px 15px 10px;
+	color: black;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+#chapter-nav-bar > ul > li > a:hover { 
+	background-color:#AF4B29;
+	color:#ffffff;
+	text-decoration:none;
+}
+
+
+#current_chapter_title {
+	float: left;
+	display: block;
+	padding: 10px 20px 10px;
+	margin-left: -20px;
+	font-size: 20px;
+	font-weight: 200;
+	color: black;
+	text-shadow: none;
 }
 
 #chapter {

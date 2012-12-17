@@ -30,6 +30,7 @@ class ChaptersController < ApplicationController
 	def edit
 		@manga = Manga.find_by_slug(params[:manga_id])
 		@chapter = Chapter.find(params[:id])
+		@page = Page.new
 	end
 
 	def destroy

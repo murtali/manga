@@ -5,4 +5,10 @@ class Chapter < ActiveRecord::Base
 
   validates_presence_of :title, :manga_id
   validates_associated :manga
+
+  def sorted_pages
+  	self.pages.sort_by do |s|
+  		s.name =~ /\d+\D+(\d+)/ ? $1 : s
+		end
+  end
 end

@@ -1,0 +1,6 @@
+<% chapter.pages.each do |page| %>
+	<div class="page-edit">
+		<%= image_tag page.image_url(:thumb) %><br />
+		<%= link_to 'delete', page_path(page), :method => 'delete', :remote => true %>
+	</div>
+<% end %>

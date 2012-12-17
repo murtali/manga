@@ -3,5 +3,25 @@
 The manga viewer grew out of a desire to build an application that made reading manga a simple and enjoyable experience.
 It was also an opportunity to experiment with many core concepts learned at Dev Bootcamp.
 
-To learn more about my experience building it:
+== Demo
+
+http://manga-reader.herokuapp.com
+
+Regular user:
+-------------
+
+u/ user@example.com
+
+p/ qwerty
+
+
+For admin acess:
+-------------
+
+u/ admin@example.com
+
+p/ qwerty
+
+
+To learn more about my experience building this application:
 http://murtali.com/building-a-manga-reader-script/

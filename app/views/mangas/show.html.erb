@@ -1,14 +1,21 @@
+<div><h2><%= @manga.name %></h2></div>
+<div><%= @manga.synopsis %></div>
+<br /><br />
 <table class="table table-hover">
-	<tr><td>Chapter Name:</td></tr>
-			<ol>
-<% @manga.chapters.each do |chapter| %>
-
-	<tr><td>
-			<li><%= link_to chapter.title, manga_chapter_path(@manga, chapter) %></li>
-	</td></tr>
-
-<% end %>
-		</ol>
-
-<tr><td><%= link_to 'Add a new chapter', new_manga_chapter_path(@manga) %></td></tr>
+	<thead>
+		<tr>
+			<td>Chapter Name:</td>
+			<td>Date Added:</td>
+		</tr>
+	</thead>
+			<% @manga.chapters.each do |chapter| %>
+			<tr>
+				<td>
+					<%= link_to chapter.title, manga_chapter_path(@manga, chapter) %>
+				</td>
+				<td>
+					<%= chapter.created_at.strftime("%b %d, %Y") %>
+				</td>
+			</tr>
+			<% end %>
 </table>

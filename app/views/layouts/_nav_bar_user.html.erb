@@ -1,33 +1,14 @@
 <% if current_user %>
 
-	<li class="divider-vertical"></li>
-
 	<li><a href="#">Logged in as: <%= current_user.email %></a></li>
-
-	<li class="divider-vertical"></li>
-
 	<li><%= link_to "Log Out", log_out_path, :method => "delete" %></li>
-
-	<li class="divider-vertical"></li>
-
-
 
 <% else %>
 
-	<li class="divider-vertical"></li>
-
 	<li><%= link_to "Sign Up", sign_up_path %></li>
-
-	<li class="divider-vertical"></li>
-
 	<li>
-
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Log In <strong class="caret"></strong></a>
-
 			<%= render 'sessions/new' %>
-
 	</li> 
 							
-	<li class="divider-vertical"></li>
-
 <% end %>

@@ -25,3 +25,10 @@ p/ qwerty
 
 To learn more about my experience building this application:
 http://murtali.com/building-a-manga-reader-script/
+
+
+== Todos
+
+Add rating system
+Add genres
+Add search functionality 

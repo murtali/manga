@@ -4,7 +4,9 @@
 
 
 <%= form_for @manga do |f| %>
-	<p><%= f.label 'Name:' %> <%= f.text_field :name %></p>
+	<div><%= f.label 'Name:' %> <%= f.text_field :name %></div>
+	<div><%= f.label 'Synopsis:' %> <%= f.text_area :synopsis, :id => 'synopsis_text_area' %></div>
+
 	<div>	
 		<%= f.submit :class => "btn" %>
 <% end %>
@@ -45,16 +47,3 @@
 	<tr><td colspan='2'><%= link_to 'Add Chapter', new_manga_chapter_path(@manga), :class => 'btn' %></td></tr>
 
 </table>
-
-<!--
-
-	Todo list:
-		- Edit series name - use inline editing
-		- Add chapters
-		- Edit specific chapters
-
-
-
-
- -->
-

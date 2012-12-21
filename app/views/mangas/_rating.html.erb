@@ -1,0 +1,7 @@
+<% (1..5).each do |x| %>
+	<% if x == manga.average_rating %>
+		<input name=<%= manga.slug %> type="radio" class="star auto-submit-star" checked="checked" value=<%= "#{manga.slug}" + "_" + "#{x}" %> />
+	<% else %>
+		<input name=<%= manga.slug %> type="radio" class="star auto-submit-star" value=<%= "#{manga.slug}" + "_" + "#{x}" %> />
+	<% end %>
+<% end %>

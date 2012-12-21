@@ -6,6 +6,7 @@ class Permission
 		allow [:mangas, :chapters, :pages], [:index, :show]
 		if user
 			allow :users, [:edit, :update]
+			allow :mangas, [:rate]
 			allow_all if user.admin?
 		end
 	end

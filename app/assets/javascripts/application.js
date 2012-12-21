@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require bootstrap
+//= require jquery.rating
 //= require_tree .
 

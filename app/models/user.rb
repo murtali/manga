@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  has_many :ratings
   before_save :encrypt_password
 
   def encrypt_password

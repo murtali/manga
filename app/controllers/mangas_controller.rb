@@ -43,6 +43,19 @@ class MangasController < ApplicationController
     redirect_to root_path
   end
 
+  def rate
+    @mangas = Manga.all
+    manga, rating = params[:manga_rating].split("_")
+    @manga = Manga.find_by_slug(manga)
+    @rating = @manga.ratings.find_by_user_id(current_user.id)
+    if @rating
+      @rating.update_attributes(:user_id => current_user.id, :manga_id => @manga.id, :rating => rating.to_i)
+    else
+      @manga.ratings.create!(:user_id => current_user.id, :manga_id => @manga.id, :rating => rating.to_i)
+    end
+    render 'index'
+  end
+
   private
 
   def get_manga

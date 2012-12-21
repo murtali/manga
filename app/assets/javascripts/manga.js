@@ -12,6 +12,16 @@ $(document).ready(function(){
 	  $('#delete-confirm').data('id', $(this).data('id')).modal('show');
 	});
 
+	$('.auto-submit-star').rating({
+		callback: function(value, link){
+			$.ajax({
+				type: 'post',
+				url: 'mangas/rate',
+				dataType: 'json',
+				data: { manga_rating: value }
+			});
+		}
+	});
 
 });
 

@@ -16,7 +16,9 @@
 
 	<tr>
 		<td><%= link_to manga.name, manga_path(manga) %></td>
-		<td></td>
+		<td class="manga-rating">
+			<%= render 'mangas/rating', :manga => manga %>
+		</td>
 		<% if allow?("mangas", "edit") %>
 		<td><%= link_to "Manage", edit_manga_path(manga.slug) %></td>
 		<% end %>

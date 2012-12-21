@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218200134) do
+ActiveRecord::Schema.define(:version => 20121219174306) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20121218200134) do
   end
 
   add_index "pages", ["chapter_id"], :name => "index_pages_on_chapter_id"
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "manga_id"
+    t.integer  "rating"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ratings", ["user_id", "manga_id", "rating"], :name => "index_ratings_on_user_id_and_manga_id_and_rating", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email"

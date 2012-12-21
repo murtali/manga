@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-  	puts params
     if !current_permission.allow?(params[:controller], params[:action])
       redirect_to mangas_path, alert: "Not authorized."
   	end

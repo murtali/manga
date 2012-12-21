@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.rating
  *= require_tree .
  */
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);

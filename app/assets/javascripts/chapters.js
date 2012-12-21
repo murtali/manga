@@ -31,13 +31,13 @@ $(document).ready(function(){
 		var current_chapter_title = $('#current_chapter_title').text();
 		var current_chapter_dropdown = $('#chapters-dropdown').find("a[data-name='" + current_chapter_title + "']");
 		var current_chapter_index = $.inArray(current_chapter_dropdown[0], chapters);
-		if (chapters[current_chapter_index + 1] == undefined){
+		if (chapters[current_chapter_index - 1] == undefined){
 			var active = $('[data-active="true"]');
 			hide_page(active);
 			$('#last_chapter').show(); 
 		}
 		else {	
-			var next_chapter_url = chapters[current_chapter_index + 1].href;
+			var next_chapter_url = chapters[current_chapter_index - 1].href;
 			window.location.href = next_chapter_url			
 		}
 

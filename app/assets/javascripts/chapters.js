@@ -26,11 +26,11 @@ $(document).ready(function(){
 	var chapters = $('#chapter-dropdown a');
 
 	$('#last_chapter').hide();
+	var current_chapter_title = $('#current_chapter_title').text();
+	var current_chapter_dropdown = $('#chapters-dropdown').find("a[data-name='" + current_chapter_title + "']");
+	var current_chapter_index = $.inArray(current_chapter_dropdown[0], chapters);
 	
 	var next_chapter = function(){
-		var current_chapter_title = $('#current_chapter_title').text();
-		var current_chapter_dropdown = $('#chapters-dropdown').find("a[data-name='" + current_chapter_title + "']");
-		var current_chapter_index = $.inArray(current_chapter_dropdown[0], chapters);
 		if (chapters[current_chapter_index - 1] == undefined){
 			var active = $('[data-active="true"]');
 			hide_page(active);
@@ -40,8 +40,17 @@ $(document).ready(function(){
 			var next_chapter_url = chapters[current_chapter_index - 1].href;
 			window.location.href = next_chapter_url			
 		}
+	};
 
-	}
+	var previous_chapter = function(){
+		if (chapters[current_chapter_index + 1] == undefined){
+			// do nothing
+		}
+		else {	
+			var previous_chapter_url = chapters[current_chapter_index + 1].href;
+			window.location.href = previous_chapter_url			
+		}
+	};
 	////////////////////////////////
 	
 	hide_all(pages);
@@ -61,9 +70,13 @@ $(document).ready(function(){
 	var show_previous = function () {
 		var active = $('[data-active="true"]');
 		var previous = $('[data-active="true"]').prev();
-
-		hide_page(active);
-		show_page(previous);
+		if (previous.length < 1 ) {
+			previous_chapter();
+		}
+		else {
+			hide_page(active);
+			show_page(previous);
+		}
 
 	};
 
